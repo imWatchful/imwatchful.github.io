@@ -1,0 +1,123 @@
+.flicker-link {
+  position: relative;
+  display: inline-block;
+  text-decoration-line: underline;
+  --flicker-underline-color: #0f7a3b;
+  text-decoration-color: var(--flicker-underline-color);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color 160ms ease;
+  cursor: inherit;
+}
+
+[data-theme='dark'] .flicker-link {
+  --flicker-underline-color: #22c55e;
+}
+
+.flicker-link:hover,
+.flicker-link:focus-visible {
+  text-decoration-color: transparent;
+}
+
+.flicker-link.is-active,
+.flicker-link[data-active='true'] {
+  text-decoration-color: transparent;
+}
+
+.flicker-link .flicker-underline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.22em;
+  height: 4px;
+  display: flex;
+  align-items: flex-end;
+  gap: var(--cell-gap, 0px);
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(0.25px);
+  mix-blend-mode: multiply;
+  transition: opacity 160ms ease;
+  will-change: opacity;
+}
+
+[data-theme='dark'] .flicker-link .flicker-underline {
+  mix-blend-mode: screen;
+}
+
+.flicker-link:hover .flicker-underline,
+.flicker-link:focus-visible .flicker-underline {
+  opacity: 1;
+}
+
+.flicker-link.is-active .flicker-underline,
+.flicker-link[data-active='true'] .flicker-underline {
+  opacity: 1;
+}
+
+.flicker-square {
+  flex: 0 0 auto;
+  width: 3px;
+  height: var(--h, 3px);
+  background: var(--g, hsl(140, 80%, 50%));
+  opacity: 0;
+  border-radius: 1px;
+  animation: flicker-pulse var(--d, 1.1s) ease-in-out infinite;
+  animation-delay: var(--delay, -0.2s);
+  animation-play-state: paused;
+  will-change: opacity;
+}
+
+.flicker-link:hover .flicker-square,
+.flicker-link:focus-visible .flicker-square {
+  animation-play-state: running;
+}
+
+.flicker-link.is-active .flicker-square,
+.flicker-link[data-active='true'] .flicker-square {
+  animation-play-state: running;
+  opacity: var(--o, 0.7);
+}
+
+@keyframes flicker-pulse {
+  0%,
+  16% {
+    opacity: 0;
+  }
+  24% {
+    opacity: var(--o, 0.7);
+  }
+  38% {
+    opacity: 0;
+  }
+  54% {
+    opacity: var(--o, 0.7);
+  }
+  70% {
+    opacity: 0;
+  }
+  84% {
+    opacity: var(--o, 0.7);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flicker-link:hover .flicker-square,
+  .flicker-link:focus-visible .flicker-square {
+    animation-play-state: paused;
+    opacity: var(--o, 0.4);
+  }
+
+  .flicker-link.is-active .flicker-square,
+  .flicker-link[data-active='true'] .flicker-square {
+    animation-play-state: paused;
+    opacity: var(--o, 0.4);
+  }
+
+  .flicker-link .flicker-underline {
+    transition-duration: 0ms;
+  }
+}

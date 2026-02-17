@@ -12,9 +12,9 @@
 
 @layer base {
 	:root {
-		--accent-color: #111;
-		--accent-color-soft: #e6e6e6;
-		--shadow-color: rgba(0, 0, 0, 0.15);
+		--accent-color: #3b2416;
+		--accent-color-soft: #eadfcd;
+		--shadow-color: rgba(59, 36, 22, 0.15);
 	}
 
 	[data-theme='dark'] {
@@ -479,15 +479,26 @@
 		height: 100%;
 		background: conic-gradient(
 			from var(--angle),
+			#b18aff,
+			#c7adff,
+			#d7c2ff,
+			#bea0ff,
+			#b18aff
+		);
+		animation: ai-rotate 2.8s linear infinite;
+		animation-play-state: paused;
+		filter: brightness(1);
+	}
+
+	[data-theme='dark'] .ai-icon__gradient {
+		background: conic-gradient(
+			from var(--angle),
 			#0e3b22,
 			#1b6f3a,
 			#36c46a,
 			#1f8f4a,
 			#0e3b22
 		);
-		animation: ai-rotate 2.8s linear infinite;
-		animation-play-state: paused;
-		filter: brightness(1);
 	}
 
 	.footer-social-link:hover .ai-icon__gradient-svg {

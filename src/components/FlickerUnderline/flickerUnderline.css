@@ -2,7 +2,7 @@
   position: relative;
   display: inline-block;
   text-decoration-line: underline;
-  --flicker-underline-color: #0f7a3b;
+  --flicker-underline-color: #b89cff;
   text-decoration-color: var(--flicker-underline-color);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.18em;
@@ -59,13 +59,17 @@
   flex: 0 0 auto;
   width: 3px;
   height: var(--h, 3px);
-  background: var(--g, hsl(140, 80%, 50%));
+  background: hsl(264, 88%, 74%);
   opacity: 0;
   border-radius: 1px;
   animation: flicker-pulse var(--d, 1.1s) ease-in-out infinite;
   animation-delay: var(--delay, -0.2s);
   animation-play-state: paused;
   will-change: opacity;
+}
+
+[data-theme='dark'] .flicker-square {
+  background: var(--g, hsl(140, 80%, 50%));
 }
 
 .flicker-link:hover .flicker-square,

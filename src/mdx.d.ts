@@ -4,7 +4,6 @@ declare module '*.mdx' {
   export const meta: {
     title: string
     date: string
-    excerpt?: string
     tags?: string[]
     slug?: string
   }
